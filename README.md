@@ -6,9 +6,13 @@ An open-source Chrome extension for drafting short, human-feeling replies inside
 
 Official product site: [xreplygen.any1tan.com](https://xreplygen.any1tan.com/)
 
+Chrome Web Store: submitted for review. The verified official listing link will be added here after Google publishes the extension.
+
 ## 中文
 
 XReplyGen Free 是一款开源的 Chrome 扩展，帮助你在 X/Twitter 的回复和引用发布框里起草简短、更自然的评论。它只辅助起草，不会替你发帖、点赞、关注、发送私信，也不会点击最终的“回复”或“发布”按钮。
+
+Chrome 应用商店：已提交审核。Google 公开发布后，会在此补充经验证的官方安装链接。
 
 免费版采用 BYOK（自带 Key）模式。你可以选择任意支持 OpenAI 兼容 `chat/completions` 接口的 HTTPS API，填写自己的 API Key 和模型名称；生成请求会直接发送给你选择的服务商。
 
