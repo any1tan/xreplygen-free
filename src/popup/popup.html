@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XReplyGen Free</title>
+    <script type="module" src="./popup.ts"></script>
+  </head>
+  <body>
+    <main class="popup-shell">
+      <header class="hero">
+        <div class="brand-row">
+          <span class="brand-mark">X</span>
+          <div>
+            <h1>XReplyGen Free</h1>
+            <p>开源 BYOK 版，只在你写回复时出现。</p>
+          </div>
+        </div>
+        <div class="hero-status"><span class="status-dot" aria-hidden="true"></span>只生成草稿，不自动发送</div>
+      </header>
+
+      <form id="settings-form" autocomplete="off">
+        <details class="settings-section settings-details" open>
+          <summary class="section-heading">
+            <strong>自己的模型连接</strong>
+            <span>任意 OpenAI 兼容 API</span>
+          </summary>
+
+          <label class="details-content">
+            <span>API Provider</span>
+            <select id="providerPreset" name="providerPreset">
+              <option value="volcengineFast">Volcengine Fast</option>
+              <option value="volcengine">Volcengine Auto / Best</option>
+              <option value="deepseek">DeepSeek V4 Flash</option>
+              <option value="openai">OpenAI</option>
+              <option value="custom">任意 OpenAI 兼容 API</option>
+            </select>
+          </label>
+
+          <label>
+            <span>API Base URL</span>
+            <input id="apiBaseUrl" name="apiBaseUrl" type="url" placeholder="https://api.example.com/v1" required />
+          </label>
+
+          <label>
+            <span>API Key</span>
+            <span class="secret-field">
+              <input id="apiKey" name="apiKey" type="password" placeholder="sk-..." required />
+              <button id="toggleApiKey" type="button" class="field-button" aria-label="显示 API Key">显示</button>
+            </span>
+          </label>
+
+          <label>
+            <span>Model Name</span>
+            <input id="modelName" name="modelName" type="text" placeholder="gpt-4o-mini" required />
+          </label>
+          <p class="field-hint">支持任意 HTTPS OpenAI 兼容的 <code>chat/completions</code> 接口。保存时 Chrome 只会要求访问你填入的 API 域名；Key 始终保存在本机。</p>
+        </details>
+
+        <section class="settings-section">
+          <div class="section-heading"><strong>回复声音</strong><span>像你，不像模板</span></div>
+          <div class="two-col">
+            <label>
+              <span>回复语言</span>
+              <select id="defaultLanguage" name="defaultLanguage">
+                <option value="auto">自动识别推文语言</option>
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="pt">Português</option>
+                <option value="ru">Русский</option>
+                <option value="ar">العربية</option>
+              </select>
+            </label>
+            <label>
+              <span>工具栏语言</span>
+              <select id="interfaceLanguage" name="interfaceLanguage">
+                <option value="auto">跟随浏览器</option>
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            <span>声音预设</span>
+            <select id="voicePreset" name="voicePreset">
+              <option value="natural">自然具体</option>
+              <option value="witty">轻松机智</option>
+              <option value="founder">创始人视角</option>
+              <option value="analyst">分析型</option>
+              <option value="warm">温和友好</option>
+              <option value="contrarian">礼貌反向观点</option>
+            </select>
+          </label>
+
+          <label>
+            <span>真人感</span>
+            <select id="humanizeLevel" name="humanizeLevel">
+              <option value="clean">克制自然</option>
+              <option value="natural">日常聊天</option>
+              <option value="loose">松弛一点</option>
+            </select>
+            <small id="humanizeHint" class="field-hint">长短句、停顿和省略更自然，不故意写错字。</small>
+          </label>
+        </section>
+
+        <section class="notice" aria-label="隐私说明">
+          <strong>本地优先</strong>
+          <span>这份开源版没有账号、订阅或托管服务。帖子内容和设置只会在你主动生成时发送到你自己选定的 API 服务。</span>
+        </section>
+
+        <div class="save-bar">
+          <p id="status" role="status" aria-live="polite"></p>
+          <button type="submit">保存设置</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

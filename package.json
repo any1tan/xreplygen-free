@@ -1,0 +1,21 @@
+{
+  "name": "xreplygen-free",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Open-source, BYOK Chrome extension for drafting natural X/Twitter replies without auto-posting.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "npm run check:public && tsc --noEmit && vite build",
+    "check:public": "node scripts/check-public-release.mjs",
+    "package": "node scripts/package-extension.mjs",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "@types/node": "^20.14.15",
+    "typescript": "^5.5.4",
+    "vite": "^8.1.4"
+  }
+}

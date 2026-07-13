@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "XReplyGen Free",
+  "short_name": "XReplyGen",
+  "version": "0.1.0",
+  "description": "Open-source BYOK drafts for X/Twitter. You review and send every reply.",
+  "minimum_chrome_version": "114",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://api.deepseek.com/*",
+    "https://api.openai.com/*",
+    "https://ark.cn-beijing.volces.com/*"
+  ],
+  "optional_host_permissions": ["https://*/*"],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "XReplyGen Free",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    },
+    "default_popup": "src/popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
